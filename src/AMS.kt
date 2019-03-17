@@ -4,7 +4,9 @@ import java.util.*
 fun main(args: Array<String>) {
     println("Hello, World!")
 //    feedTheFish()
-    println(whatShouldIDoToday("happy").toString())
+//    println(whatShouldIDoToday("happy").toString())
+    val simpleSpice = SimpleSpice()
+    println("The spice is ${simpleSpice.spiceName} and the heat is ${simpleSpice.heat}")
 }
 //
 //fun shouldChangeWater(day: String, temperature: Int = 22, dirty: Int = 20): Boolean {
@@ -45,19 +47,53 @@ fun main(args: Array<String>) {
 //    }
 //}
 
-fun whatShouldIDoToday(mood: String, weather: String = "sunny", temperature: Int = 24): String{
+//fun whatShouldIDoToday(mood: String, weather: String = "sunny", temperature: Int = 24): String{
+//
+//    return when {
+//        isHappy(mood) && isSunny(weather) && isHot(temperature) -> "go swimming"
+//        isHappy(mood) && isSunny(weather) && !isHot(temperature) -> "go karaoke"
+//        isHappy(mood) && !isSunny(weather) -> "stay home and play games"
+//        !isHappy(mood) && !isSunny(weather) -> "stay home and watch a movie"
+//        isHappy(mood) -> "go for a walk"
+//        !isHappy(mood) -> "go meet a friend"
+//        else -> "work"
+//    }
+//}
+//
+//fun isHappy(mood: String): Boolean = mood == "happy"
+//fun isSunny(weather: String): Boolean = weather == "sunny"
+//fun isHot(temperature: Int): Boolean = temperature > 20
 
-    return when {
-        isHappy(mood) && isSunny(weather) && isHot(temperature) -> "go swimming"
-        isHappy(mood) && isSunny(weather) && !isHot(temperature) -> "go karaoke"
-        isHappy(mood) && !isSunny(weather) -> "stay home and play games"
-        !isHappy(mood) && !isSunny(weather) -> "stay home and watch a movie"
-        isHappy(mood) -> "go for a walk"
-        !isHappy(mood) -> "go meet a friend"
-        else -> "work"
-    }
+class SimpleSpice {
+
+    var spiceName = "curry"
+    var spiciness = "mild"
+    val heat: Int
+        get() = 5
+
 }
 
-fun isHappy(mood: String): Boolean = mood == "happy"
-fun isSunny(weather: String): Boolean = weather == "sunny"
-fun isHot(temperature: Int): Boolean = temperature > 20
+class Spice(val name: String, val spiciness: String = "mild") {
+
+    private val heat: Int
+        get() {
+            return when (spiciness){
+                "mild" -> 1
+                "medium" -> 3
+                "spicy" -> 5
+                "very spicy" -> 7
+                else -> 0
+            }
+        }
+
+    val listOfSpices = listOf(Spice("curry", "mild"), Spice("pepper", "medium"),
+        Spice("cayenne", "very spicy"))
+
+    init{
+        val spiceList = listOfSpices.filter{it.heat < 5}
+    }
+
+    fun makeSalt() = Spice("Salt")
+
+}
+
