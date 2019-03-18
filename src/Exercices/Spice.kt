@@ -3,6 +3,18 @@ package Exercices
 fun main(args: Array<String>) {
     val simpleSpice = SimpleSpice()
     println("The spice is ${simpleSpice.spiceName} and the heat is ${simpleSpice.heat}")
+
+    val spiceCabinet = listOf(SpiceContainer(Curry("Yellow Curry", "mild")),
+        SpiceContainer(Curry("Red Curry", "medium")),
+        SpiceContainer(Curry("Green Curry", "spicy")))
+
+    for(element in spiceCabinet) println(element.label)
+}
+
+
+data class SpiceContainer(val spice: Spice){
+
+    val label = spice.name
 }
 
 class Curry(name: String, spiciness: String,
@@ -20,14 +32,18 @@ interface Grinder {
 }
 
 interface SpiceColor {
-    val color: String
+    val color: Color
+}
+
+enum class Color(val rgb: Int) {
+    RED(0xFF0000), GREEN(0x00FF00), BLUE(0x0000FF), YELLOW(0xFFFF00);
 }
 
 object YellowSpiceColor : SpiceColor {
-    override val color = "Yellow"
+    override val color = Color.YELLOW
 }
 
-abstract class Spice(val name: String, val spiciness: String = "mild", color: SpiceColor) : SpiceColor by color {
+sealed class Spice(val name: String, val spiciness: String = "mild", color: SpiceColor) : SpiceColor by color {
 
     abstract fun prepareSpice()
 
