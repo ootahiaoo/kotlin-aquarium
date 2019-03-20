@@ -67,7 +67,7 @@ open class Book(val title: String, val author: String, val year: Int, var pages:
     fun printUrl() {
         println("${BASE_URL + title}.html")
     }
-    
+
     fun getTitleAuthor(): Pair<String, String> {
         return (title to author)
     }
