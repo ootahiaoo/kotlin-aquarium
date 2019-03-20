@@ -4,21 +4,25 @@ fun main(args: Array<String>) {
     val simpleSpice = SimpleSpice()
     println("The spice is ${simpleSpice.spiceName} and the heat is ${simpleSpice.heat}")
 
-    val spiceCabinet = listOf(SpiceContainer(Curry("Yellow Curry", "mild")),
+    val spiceCabinet = listOf(
+        SpiceContainer(Curry("Yellow Curry", "mild")),
         SpiceContainer(Curry("Red Curry", "medium")),
-        SpiceContainer(Curry("Green Curry", "spicy")))
+        SpiceContainer(Curry("Green Curry", "spicy"))
+    )
 
-    for(element in spiceCabinet) println(element.label)
+    for (element in spiceCabinet) println(element.label)
 }
 
 
-data class SpiceContainer(val spice: Spice){
+data class SpiceContainer(val spice: Spice) {
 
     val label = spice.name
 }
 
-class Curry(name: String, spiciness: String,
-            color: SpiceColor = YellowSpiceColor) : Spice(name, spiciness, color), Grinder {
+class Curry(
+    name: String, spiciness: String,
+    color: SpiceColor = YellowSpiceColor
+) : Spice(name, spiciness, color), Grinder {
     override fun grind() {
     }
 

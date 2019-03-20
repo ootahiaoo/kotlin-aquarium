@@ -41,7 +41,7 @@ fun makeFish() {
     pleco.eat()
 }
 
-fun feedFish(fish: FishAction){
+fun feedFish(fish: FishAction) {
     //make some food then
     fish.eat()
 }

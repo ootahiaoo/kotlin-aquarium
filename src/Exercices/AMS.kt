@@ -44,7 +44,7 @@ fun main(args: Array<String>) {
 //    }
 //}
 
-fun whatShouldIDoToday(mood: String, weather: String = "sunny", temperature: Int = 24): String{
+fun whatShouldIDoToday(mood: String, weather: String = "sunny", temperature: Int = 24): String {
 
     return when {
         isHappy(mood) && isSunny(weather) && isHot(temperature) -> "go swimming"

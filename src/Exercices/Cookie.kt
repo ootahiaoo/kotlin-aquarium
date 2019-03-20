@@ -1,4 +1,5 @@
 package Exercices
+
 fun main(args: Array<String>) {
     var fortune: String = ""
     while (!fortune.contains("Stuff again")) {
@@ -7,13 +8,13 @@ fun main(args: Array<String>) {
     }
 }
 
-fun getBirthday() : Int{
-    return readLine()?.toInt() ?:1
+fun getBirthday(): Int {
+    return readLine()?.toInt() ?: 1
 }
 
-fun getFortune(birthday : Int) : String{
+fun getFortune(birthday: Int): String {
     val fortuneMessage = listOf("Stuff", "Stuff again", "Stuff once more")
-    val index = when (birthday){
+    val index = when (birthday) {
         in 1..15 -> 0
         in 15..30 -> 1
         else -> 3
